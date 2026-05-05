@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-Week Alpinism Prep Plan</title>
+<meta name="description" content="A 6-week training plan to build mountain fitness from a flatland base, with weekly schedules, prehab, strength progression, and pack loading.">
+<style>
+  :root {
+    --bg: #FAF9F6;
+    --surface: #FFFFFF;
+    --surface-alt: #F1EFE8;
+    --text: #1F1E1B;
+    --text-secondary: #5F5E5A;
+    --text-tertiary: #888780;
+    --border: rgba(31, 30, 27, 0.12);
+    --border-strong: rgba(31, 30, 27, 0.25);
+    --accent: #185FA5;
+    --accent-bg: #E6F1FB;
+    --warning: #854F0B;
+    --warning-bg: #FAEEDA;
+    --success: #0F6E56;
+    --success-bg: #E1F5EE;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --max-width: 760px;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1917;
+      --surface: #232220;
+      --surface-alt: #2C2C2A;
+      --text: #F1EFE8;
+      --text-secondary: #B4B2A9;
+      --text-tertiary: #888780;
+      --border: rgba(241, 239, 232, 0.12);
+      --border-strong: rgba(241, 239, 232, 0.25);
+      --accent: #85B7EB;
+      --accent-bg: #0C447C;
+      --warning: #FAC775;
+      --warning-bg: #633806;
+      --success: #5DCAA5;
+      --success-bg: #085041;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 6px;
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+
+  p { margin: 0 0 1rem; }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .section { margin-bottom: 3rem; }
+  .section-header { margin-bottom: 1.25rem; }
+  .section-header p { color: var(--text-secondary); font-size: 14px; margin: 0; }
+
+  /* Stat cards */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .stat {
+    background: var(--surface-alt);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 4px;
+  }
+  .stat-value {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .tab {
+    padding: 8px 14px;
+    border: 0.5px solid var(--border);
+    background: transparent;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .tab:hover { background: var(--surface-alt); }
+  .tab.active {
+    background: var(--surface);
+    border-color: var(--border-strong);
+  }
+
+  /* Week panel */
+  .week-panel {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border);
+    padding: 1.5rem;
+  }
+  .week-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 6px;
+  }
+  .week-theme {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 12px;
+    line-height: 1.6;
+  }
+  .week-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+  .week-meta span:not(:last-child)::after { content: " ·"; margin-left: 8px; }
+
+  .day-row {
+    display: grid;
+    grid-template-columns: 64px 1fr 130px;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 0.5px solid var(--border);
+    align-items: baseline;
+  }
+  .day-row:last-of-type { border-bottom: none; }
+  .day-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .day-session {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .day-meta {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+  .climb { color: var(--accent); }
+
+  .key-callout {
+    background: var(--surface-alt);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    margin-top: 16px;
+  }
+  .key-callout-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .key-callout p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card p:last-child { margin-bottom: 0; }
+  .card-title {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .card-grid .card { margin-bottom: 0; }
+
+  ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+  ul li { margin-bottom: 2px; }
+
+  /* Tables */
+  .table-wrap {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 480px;
+  }
+  th {
+    text-align: left;
+    padding: 8px;
+    font-weight: 500;
+    border-bottom: 0.5px solid var(--border-strong);
+    font-size: 13px;
+  }
+  td {
+    padding: 8px;
+    border-bottom: 0.5px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  /* Callouts */
+  .callout {
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    margin-bottom: 1.5rem;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .callout strong { font-weight: 500; }
+  .callout-info {
+    background: var(--accent-bg);
+    color: var(--accent);
+  }
+  .callout-warning {
+    background: var(--warning-bg);
+    color: var(--warning);
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .pain-card {
+    background: var(--warning-bg);
+    color: var(--warning);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+  }
+  .pain-card .card-title { color: var(--warning); margin: 0 0 12px; }
+  .pain-card p { color: var(--warning); font-size: 13px; margin: 0 0 12px; }
+  .pain-card ul { color: var(--warning); font-size: 13px; padding-left: 18px; }
+
+  .helper-text {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+    margin: 0 0 2rem;
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; color: black; }
+    .tabs { display: none; }
+    .week-panel { page-break-inside: avoid; margin-bottom: 1.5rem; border: 1px solid #ccc; }
+    #week-panels > * { display: block !important; }
+  }
+
+  /* Responsive */
+  @media (max-width: 520px) {
+    .container { padding: 1.5rem 1rem 3rem; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 18px; }
+    .day-row { grid-template-columns: 48px 1fr; }
+    .day-meta { grid-column: 2; text-align: left; padding-top: 2px; }
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>6-week alpinism prep plan</h1>
+  <p class="subtitle">Belgium → Alps · course June 14–19 · ~10 kg pack · zone 2 focus</p>
+</header>
+
+<div class="stats">
+  <div class="stat">
+    <p class="stat-label">Weeks</p>
+    <p class="stat-value">6</p>
+  </div>
+  <div class="stat">
+    <p class="stat-label">Peak long effort</p>
+    <p class="stat-value">2 hours</p>
+  </div>
+  <div class="stat">
+    <p class="stat-label">Peak load</p>
+    <p class="stat-value">12 kg</p>
+  </div>
+  <div class="stat">
+    <p class="stat-label">Z2 share</p>
+    <p class="stat-value">~80%</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Weekly plan</h2>
+    <p>Tap a week to see the daily schedule and key workout.</p>
+  </div>
+
+  <div class="tabs" id="week-tabs">
+    <button class="tab active" data-week="1">Week 1</button>
+    <button class="tab" data-week="2">Week 2</button>
+    <button class="tab" data-week="3">Week 3</button>
+    <button class="tab" data-week="4">Week 4</button>
+    <button class="tab" data-week="5">Week 5</button>
+    <button class="tab" data-week="6">Week 6 taper</button>
+  </div>
+
+  <div id="week-panels"></div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Daily warm-up · 8 minutes</h2>
+    <p>Before every session. No rest between movements.</p>
+  </div>
+
+  <div class="card">
+    <table>
+      <tbody>
+        <tr><td>Ankle circles + calf pumps</td><td style="text-align: right;">30s each direction, each foot</td></tr>
+        <tr><td>Leg swings (front-back, side-side)</td><td style="text-align: right;">10 each direction per leg</td></tr>
+        <tr><td>World's greatest stretch</td><td style="text-align: right;">4 per side</td></tr>
+        <tr><td>Glute bridges</td><td style="text-align: right;">15 reps</td></tr>
+        <tr><td>Monster walks</td><td style="text-align: right;">10 steps each direction</td></tr>
+        <tr><td>Bodyweight squats, slow</td><td style="text-align: right;">15 reps</td></tr>
+        <tr><td>Calf raises</td><td style="text-align: right;">20 reps</td></tr>
+      </tbody>
+    </table>
+    <p class="helper-text" style="margin: 12px 0 0;">For runs and hikes, add 3 min of easy walking. Cold-start running is the top cause of IT band flare-ups.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Prehab routine · 10–12 minutes</h2>
+    <p>4× per week minimum. Best on climbing days and after easy sessions.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <p class="card-title">IT band complex</p>
+      <ul>
+        <li>Side-lying clamshells — 3×15 each</li>
+        <li>Single-leg glute bridges — 3×12 each</li>
+        <li>Side-lying leg raises — 3×15 each</li>
+        <li>Copenhagen plank, knee version — 3×20s each</li>
+        <li>Standing hip hikes — 3×12 each</li>
+        <li>Foam roll TFL and quads, not the IT band itself</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="card-title">Plantar fascia complex</p>
+      <ul>
+        <li>Towel scrunches — 2×30s each foot</li>
+        <li>Marble pickups or toe yoga — 2×15 each</li>
+        <li>Calf raises, straight knee — 3×15</li>
+        <li>Calf raises, bent knee soleus — 3×15</li>
+        <li>Eccentric heel drops, 3s lower — 3×10 each</li>
+        <li>Frozen bottle roll — 2 min each, evenings</li>
+        <li>Tibialis raises — 3×15</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    <strong>Morning ritual · 60 seconds, every day.</strong> Before getting out of bed, do 20 ankle pumps and 10 toe spreads on each foot. Plantar fascia tightens overnight; first morning steps are when re-injury happens.
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Strength progression</h2>
+    <p>Two sessions per week. Tuesday heavier, Saturday integrated or lighter.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Wk 1–2</th>
+          <th>Wk 3–4</th>
+          <th>Wk 5</th>
+          <th>Wk 6 taper</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Goblet/back squat</td><td>3×8</td><td>4×6</td><td>4×5 heavy</td><td>2×5 light</td></tr>
+        <tr><td>Romanian deadlift</td><td>3×10</td><td>3×8</td><td>4×6</td><td>2×6 light</td></tr>
+        <tr><td>Bulgarian split squat</td><td>3×10 each</td><td>3×12 each</td><td>4×10 each</td><td>2×8 each</td></tr>
+        <tr><td>Weighted step-ups</td><td>3×10, BW</td><td>3×12, +5kg</td><td>3×15, +10kg</td><td>2×10, +5kg</td></tr>
+        <tr><td>Walking lunges</td><td>3×10 each</td><td>3×12 w/ DBs</td><td>3×15 w/ DBs</td><td>skip</td></tr>
+        <tr><td>Calf raises, loaded</td><td>3×15</td><td>3×20</td><td>4×15</td><td>2×15</td></tr>
+        <tr><td>Hanging knee raises</td><td>3×10</td><td>3×12</td><td>3×15</td><td>2×10</td></tr>
+        <tr><td>Pallof press</td><td>3×12 each</td><td>3×15 each</td><td>3×15 each</td><td>2×12 each</td></tr>
+        <tr><td>Side plank</td><td>3×30s each</td><td>3×45s each</td><td>3×60s each</td><td>2×30s each</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="helper-text">Weighted step-up is your most important exercise — closest gym analog to mountain hiking. Knee-height box, drive through the heel, control the descent.</p>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Backpack progression</h2>
+    <p>Use real hiking gear — load distribution matters and you need to break in your pack.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Long effort</th>
+          <th>Weekday hike</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>4 kg</td><td>none</td></tr>
+        <tr><td>2</td><td>6 kg</td><td>4 kg</td></tr>
+        <tr><td>3</td><td>8 kg</td><td>6 kg</td></tr>
+        <tr><td>4</td><td>10 kg</td><td>8 kg</td></tr>
+        <tr><td>5</td><td>12 kg overload</td><td>8 kg</td></tr>
+        <tr><td>6</td><td>6 kg → 0 kg</td><td>none</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="helper-text">Week 5 overload at 12 kg is intentional — at 10 kg on the actual course your pack will feel light.</p>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Treadmill, stairs, heart-rate zones</h2>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <p class="card-title">Treadmill incline</p>
+      <ul>
+        <li>Z2 incline walk: 8–12% @ 5.0–5.5 km/h</li>
+        <li>Sustained uphill: 12–15% @ 4.5–5.0 km/h</li>
+        <li>Hard intervals: 15% @ 5.5–6.0 km/h</li>
+      </ul>
+      <p class="helper-text" style="margin: 12px 0 0;">Uphill work is always walking pace — loads the posterior chain like hiking and protects IT band and plantar fascia.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">Stair machine</p>
+      <ul>
+        <li>Z2 steady: level 6–8</li>
+        <li>Tempo: level 9–11</li>
+        <li>Hard: level 12–14</li>
+      </ul>
+      <p class="helper-text" style="margin: 12px 0 0;">Light touch on rails for balance only — leaning defeats the purpose.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">Heart-rate zones</p>
+      <ul>
+        <li>Z2: RPE 3–4, full sentences, ~130–150 bpm</li>
+        <li>Z3: RPE 5–6, short phrases, ~150–165 bpm</li>
+        <li>Z4: RPE 7–8, single words, ~165–175 bpm</li>
+      </ul>
+      <p class="helper-text" style="margin: 12px 0 0;">~80% of training stays in Z2. The discipline is staying easy when it feels too easy.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Recovery basics</h2>
+  </div>
+
+  <div class="card">
+    <p class="card-title">Sleep</p>
+    <p style="font-size: 14px; color: var(--text-secondary); margin: 0 0 16px;">8 hours minimum, especially Tuesday post-strength and Saturday post-long. If consistently exhausted, cut a session — not sleep.</p>
+
+    <p class="card-title">Nutrition</p>
+    <p style="font-size: 14px; color: var(--text-secondary); margin: 0 0 16px;">Carbs around training. Protein 1.6–2.0 g/kg daily. Long efforts: practice 30–60 g carbs/hour with food + gels you can replicate on the mountain. 500 ml water within an hour of finishing.</p>
+
+    <p class="card-title">Red flags</p>
+    <ul>
+      <li>Resting HR up &gt;7 bpm for 2+ days → extra rest day</li>
+      <li>Sleep quality dropping despite good hygiene → reduce volume 20%</li>
+      <li>Mood/motivation crash → almost always overtraining; pull back</li>
+      <li>Climbing performance dropping → ease the strength work</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Pain management</h2>
+    <p>If pain is sharp, localized, and changes how you move, stop. Muscle fatigue that resolves with warm-up is fine.</p>
+  </div>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <p class="card-title">IT band</p>
+      <p><strong>Signs:</strong> sharp lateral knee pain, especially descending or after 20–30 min running.</p>
+      <ul>
+        <li>Mild tightness → finish easy, prehab + ice 15 min</li>
+        <li>Pain that changes gait → STOP. Stair machine or pool only, 3–5 days</li>
+        <li>Pain at rest or on stairs → 5–7 days off impact, see a physio</li>
+      </ul>
+    </div>
+    <div class="pain-card">
+      <p class="card-title">Plantar fascia</p>
+      <p><strong>Signs:</strong> sharp heel pain on first morning steps, arch pain after long efforts.</p>
+      <ul>
+        <li>Mild morning stiffness → eccentric heel drops, frozen bottle</li>
+        <li>Pain during session → stop, switch to stair machine 3 days</li>
+        <li>Persistent pain → reduce volume 30%, check shoes/heel cup</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    Boots and pack on your body for every weekend session by Week 3. Blisters and pack-fit issues will ruin the course before fitness gaps will.
+  </div>
+</section>
+
+<footer>
+  <p>Built for a single climber's prep. Not medical advice — listen to your body and consult a physio if pain persists.</p>
+</footer>
+
+</div>
+
+<script>
+  const weeks = {
+    1: {
+      theme: "Baseline & adaptation — establish routine, start prehab religiously.",
+      meta: ["Long effort: 75 min", "Pack: 4 kg", "Volume: baseline"],
+      days: [
+        ["Mon", "Climbing + prehab after", "90 min + 10 · RPE 6–7", true],
+        ["Tue", "Strength A — full lower + core", "60 min · moderate", false],
+        ["Wed", "Zone 2 run, flat", "45 min · Z2", false],
+        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Fri", "Incline walk treadmill, 8% @ 5.0 km/h", "50 min · Z2", false],
+        ["Sat", "Long effort: stair + treadmill mix, 4 kg pack", "75 min · Z2", false],
+        ["Sun", "Active recovery: easy walk or rest", "30–45 min · easy", false]
+      ],
+      key: "Saturday's 75-min weighted long effort. Alternate 15 min stair machine (level 7) with 15 min treadmill (10% incline, 5 km/h)."
+    },
+    2: {
+      theme: "Build volume — increase ~15%, introduce sustained climbs.",
+      meta: ["Long effort: 90 min", "Pack: 6 kg", "Volume: +15%"],
+      days: [
+        ["Mon", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Tue", "Strength A", "60 min · moderate", false],
+        ["Wed", "Zone 2 run, flat", "55 min · Z2", false],
+        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Fri", "Sustained incline: 40 min @ 12%, 4.5 km/h after warm-up", "60 min · Z2/low Z3", false],
+        ["Sat", "Long effort: stair + incline treadmill, 6 kg pack", "90 min · Z2", false],
+        ["Sun", "Mobility + easy walk", "45 min · easy", false]
+      ],
+      key: "Friday's 40-min sustained 12% incline. First taste of real uphill duration. If calves cramp, more eccentric heel drops."
+    },
+    3: {
+      theme: "Specificity begins — vertical-gain focus, longer weekends.",
+      meta: ["Long effort: 110 min", "Pack: 8 kg", "First mountain sim"],
+      days: [
+        ["Mon", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Tue", "Strength B — heavier, lower volume", "60 min · moderate-hard", false],
+        ["Wed", "Zone 2 run, flat", "60 min · Z2", false],
+        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Fri", "Stair intervals: 6×4 min hard L11 / 2 min easy L6, 4 kg", "50 min · Z3–Z4", false],
+        ["Sat", "Long effort: stair + treadmill 12% sustained, 8 kg", "110 min · Z2", false],
+        ["Sun", "Active recovery + full prehab", "30 min · easy", false]
+      ],
+      key: "Saturday's 110 min with 8 kg — first session that genuinely simulates a mountain day. Stay strict on Z2; the last 30 min are where adaptation happens."
+    },
+    4: {
+      theme: "Peak volume — bring weight to course load.",
+      meta: ["Long effort: 120 min", "Pack: 10 kg", "Highest volume"],
+      days: [
+        ["Mon", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Tue", "Strength B", "60 min · moderate-hard", false],
+        ["Wed", "Zone 2 run, OR easy incline walk if heavy legs", "60 min · Z2", false],
+        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Fri", "Sustained incline: 60 min @ 12–14%, 4.5 km/h, 6 kg pack", "60 min · Z2/low Z3", false],
+        ["Sat", "Long effort: 2-hour mountain simulation, 10 kg pack", "120 min · Z2", false],
+        ["Sun", "Easy mobility + 30-min walk", "30 min · easy", false]
+      ],
+      key: "Saturday's 2-hour effort at course weight. Structure: 30 min stair L8 → 30 min treadmill 12% → 20 min stair L9 → 20 min treadmill 14% → 20 min stair L7 cooldown. Practice course-day fueling."
+    },
+    5: {
+      theme: "Peak intensity — overload weight, slight volume reduction.",
+      meta: ["Long effort: 105 min", "Pack: 12 kg overload", "Pre-taper"],
+      days: [
+        ["Mon", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Tue", "Strength C — peak loads, lower reps", "50 min · hard", false],
+        ["Wed", "Zone 2 run, flat", "45 min · Z2", false],
+        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
+        ["Fri", "Stair intervals: 4×6 min hard L12 / 3 min easy, 6 kg", "50 min · Z3–Z4", false],
+        ["Sat", "Overload long effort, 12 kg pack", "105 min · Z2", false],
+        ["Sun", "Rest or 20-min walk", "—", false]
+      ],
+      key: "Saturday's 12-kg overload session. Slightly shorter than Week 4 but heavier. After this session, the taper begins."
+    },
+    6: {
+      theme: "Aggressive taper — cut volume ~50%, arrive fresh on June 14.",
+      meta: ["Volume: −50%", "Pack: 6 → 0 kg", "Maintain sharpness"],
+      days: [
+        ["Mon", "Climbing — volume only, no projecting + prehab", "75 min + 10 · RPE 5–6", true],
+        ["Tue", "Light strength: half volume of Week 5", "35 min · easy-mod", false],
+        ["Wed", "Zone 2 run, flat", "30 min · Z2", false],
+        ["Thu", "Climbing — light, technique only", "60 min · RPE 4–5", true],
+        ["Fri", "Easy incline walk, 8%, no pack", "30 min · Z2", false],
+        ["Sat", "Final tune-up: mixed incline/stair, 6 kg pack", "45 min · Z2", false],
+        ["Sun", "Rest, mobility, hydrate, sleep", "—", false],
+        ["Mon Jun 13", "20-min walk + full mobility, packing", "20 min · very easy", false]
+      ],
+      key: "Resist the urge to test fitness this week. Fitness is built; now you preserve it. 50% volume cut + a few short sharp efforts brings you to the start line fresh."
+    }
+  };
+
+  function escapeHTML(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function renderWeek(n) {
+    const wk = weeks[n];
+    const panels = document.getElementById("week-panels");
+    let html = '<div class="week-panel">';
+    html += '<p class="week-title">Week ' + n + '</p>';
+    html += '<p class="week-theme">' + escapeHTML(wk.theme) + '</p>';
+    html += '<div class="week-meta">' + wk.meta.map(m => '<span>' + escapeHTML(m) + '</span>').join('') + '</div>';
+    for (const [day, session, meta, isClimb] of wk.days) {
+      const cls = isClimb ? ' climb' : '';
+      html += '<div class="day-row">';
+      html += '<div class="day-name' + cls + '">' + escapeHTML(day) + '</div>';
+      html += '<div class="day-session' + cls + '">' + escapeHTML(session) + '</div>';
+      html += '<div class="day-meta">' + escapeHTML(meta) + '</div>';
+      html += '</div>';
+    }
+    html += '<div class="key-callout"><div class="key-callout-label">Key workout</div><p>' + escapeHTML(wk.key) + '</p></div>';
+    html += '</div>';
+    panels.innerHTML = html;
+  }
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderWeek(tab.dataset.week);
+    });
+  });
+
+  renderWeek(1);
+</script>
+
+</body>
+</html>
