@@ -3,742 +3,1346 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6-Week Alpinism Prep Plan</title>
-<meta name="description" content="A 6-week training plan to build mountain fitness from a flatland base, with weekly schedules, prehab, strength progression, and pack loading.">
+<title>June 2026 — Road to 7a</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500;700&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FAF9F6;
-    --surface: #FFFFFF;
-    --surface-alt: #F1EFE8;
-    --text: #1F1E1B;
-    --text-secondary: #5F5E5A;
-    --text-tertiary: #888780;
-    --border: rgba(31, 30, 27, 0.12);
-    --border-strong: rgba(31, 30, 27, 0.25);
-    --accent: #185FA5;
-    --accent-bg: #E6F1FB;
-    --warning: #854F0B;
-    --warning-bg: #FAEEDA;
-    --success: #0F6E56;
-    --success-bg: #E1F5EE;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --max-width: 760px;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --bg: #0f1410;
+    --bg-2: #161c18;
+    --bg-3: #1c241f;
+    --ink: #e8e4d8;
+    --ink-dim: #a8a497;
+    --ink-faint: #6b6a5f;
+    --rule: #2a3128;
+    --accent: #d4732b;
+    --accent-2: #c7a96b;
+    --green: #7a9d6b;
+    --yellow: #c9a227;
+    --red: #b04a3a;
+    --serif: "Fraunces", serif;
+    --mono: "JetBrains Mono", monospace;
+    --sans: "Inter Tight", sans-serif;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1A1917;
-      --surface: #232220;
-      --surface-alt: #2C2C2A;
-      --text: #F1EFE8;
-      --text-secondary: #B4B2A9;
-      --text-tertiary: #888780;
-      --border: rgba(241, 239, 232, 0.12);
-      --border-strong: rgba(241, 239, 232, 0.25);
-      --accent: #85B7EB;
-      --accent-bg: #0C447C;
-      --warning: #FAC775;
-      --warning-bg: #633806;
-      --success: #5DCAA5;
-      --success-bg: #085041;
-    }
-  }
-
-  * { box-sizing: border-box; }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
   body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--text);
     background: var(--bg);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(at 15% 8%, rgba(212, 115, 43, 0.10) 0px, transparent 50%),
+      radial-gradient(at 85% 92%, rgba(199, 169, 107, 0.06) 0px, transparent 50%);
   }
+
+  ::selection { background: var(--accent); color: var(--bg); }
 
   .container {
-    max-width: var(--max-width);
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 2.5rem 1.25rem 4rem;
+    padding: 80px 32px 120px;
+    position: relative;
   }
 
-  header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 0.5px solid var(--border);
+  /* PROGRESS RAIL */
+  .progress-rail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(42, 49, 40, 0.5);
+    z-index: 100;
+    backdrop-filter: blur(8px);
   }
-
-  h1 {
-    font-size: 28px;
-    font-weight: 500;
-    margin: 0 0 6px;
-    letter-spacing: -0.01em;
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
   }
-
-  h2 {
-    font-size: 20px;
-    font-weight: 500;
-    margin: 0 0 6px;
-    letter-spacing: -0.005em;
-  }
-
-  h3 {
-    font-size: 16px;
-    font-weight: 500;
-    margin: 0 0 12px;
-  }
-
-  p { margin: 0 0 1rem; }
-
-  .subtitle {
-    font-size: 15px;
-    color: var(--text-secondary);
-    margin: 0;
-  }
-
-  .section { margin-bottom: 3rem; }
-  .section-header { margin-bottom: 1.25rem; }
-  .section-header p { color: var(--text-secondary); font-size: 14px; margin: 0; }
-
-  /* Stat cards */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin-bottom: 2rem;
-  }
-  .stat {
-    background: var(--surface-alt);
-    border-radius: var(--radius-md);
-    padding: 1rem;
-  }
-  .stat-label {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin: 0 0 4px;
-  }
-  .stat-value {
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0;
-  }
-
-  /* Tabs */
-  .tabs {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-  }
-  .tab {
+  .progress-badge {
+    position: fixed;
+    top: 16px;
+    right: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink-dim);
+    background: var(--bg-2);
     padding: 8px 14px;
-    border: 0.5px solid var(--border);
-    background: transparent;
-    border-radius: var(--radius-md);
-    font-size: 14px;
-    font-family: inherit;
-    color: var(--text);
-    cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .tab:hover { background: var(--surface-alt); }
-  .tab.active {
-    background: var(--surface);
-    border-color: var(--border-strong);
-  }
-
-  /* Week panel */
-  .week-panel {
-    background: var(--surface);
-    border-radius: var(--radius-lg);
-    border: 0.5px solid var(--border);
-    padding: 1.5rem;
-  }
-  .week-title {
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0 0 6px;
-  }
-  .week-theme {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin: 0 0 12px;
-    line-height: 1.6;
-  }
-  .week-meta {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    font-size: 13px;
-    color: var(--text-tertiary);
-    margin-bottom: 16px;
-  }
-  .week-meta span:not(:last-child)::after { content: " ·"; margin-left: 8px; }
-
-  .day-row {
-    display: grid;
-    grid-template-columns: 64px 1fr 130px;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 0.5px solid var(--border);
-    align-items: baseline;
-  }
-  .day-row:last-of-type { border-bottom: none; }
-  .day-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
-  }
-  .day-session {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .day-meta {
-    font-size: 12px;
-    color: var(--text-tertiary);
-    text-align: right;
-  }
-  .climb { color: var(--accent); }
-
-  .key-callout {
-    background: var(--surface-alt);
-    border-radius: var(--radius-md);
-    padding: 12px 16px;
-    margin-top: 16px;
-  }
-  .key-callout-label {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-secondary);
+    border: 1px solid var(--rule);
+    z-index: 100;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
   }
-  .key-callout p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    margin: 0;
-  }
-
-  /* Cards */
-  .card {
-    background: var(--surface);
-    border-radius: var(--radius-lg);
-    border: 0.5px solid var(--border);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .card p:last-child { margin-bottom: 0; }
-  .card-title {
-    font-size: 15px;
+  .progress-badge strong {
+    color: var(--accent);
     font-weight: 500;
-    margin: 0 0 12px;
   }
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
-    margin-bottom: 1rem;
-  }
-  .card-grid .card { margin-bottom: 0; }
 
-  ul {
-    margin: 0;
-    padding-left: 18px;
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--text-secondary);
+  /* HERO */
+  .hero {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 56px;
+    margin-bottom: 72px;
+    position: relative;
   }
-  ul li { margin-bottom: 2px; }
-
-  /* Tables */
-  .table-wrap {
-    background: var(--surface);
-    border-radius: var(--radius-lg);
-    border: 0.5px solid var(--border);
-    padding: 1rem 1.25rem;
-    margin-bottom: 1rem;
-    overflow-x: auto;
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 160px;
+    height: 160px;
+    background-image: repeating-radial-gradient(
+      circle at 70% 70%, transparent 0, transparent 14px,
+      var(--accent-2) 14px, var(--accent-2) 15px
+    );
+    opacity: 0.15;
+    pointer-events: none;
+    border-radius: 50%;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    min-width: 480px;
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
-  th {
-    text-align: left;
-    padding: 8px;
-    font-weight: 500;
-    border-bottom: 0.5px solid var(--border-strong);
-    font-size: 13px;
+  .eyebrow::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--accent);
   }
-  td {
-    padding: 8px;
-    border-bottom: 0.5px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 13px;
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(48px, 9vw, 108px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
   }
-  tr:last-child td { border-bottom: none; }
-
-  /* Callouts */
-  .callout {
-    border-radius: var(--radius-md);
-    padding: 14px 18px;
-    margin-bottom: 1.5rem;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  .callout strong { font-weight: 500; }
-  .callout-info {
-    background: var(--accent-bg);
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
     color: var(--accent);
   }
-  .callout-warning {
-    background: var(--warning-bg);
-    color: var(--warning);
+  .subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--ink-dim);
+    max-width: 620px;
+    line-height: 1.45;
   }
-
-  .pain-grid {
+  .meta-strip {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
-    margin-bottom: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 32px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
   }
-  .pain-card {
-    background: var(--warning-bg);
-    color: var(--warning);
-    border-radius: var(--radius-lg);
-    padding: 1.25rem 1.5rem;
+  .meta-item .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
   }
-  .pain-card .card-title { color: var(--warning); margin: 0 0 12px; }
-  .pain-card p { color: var(--warning); font-size: 13px; margin: 0 0 12px; }
-  .pain-card ul { color: var(--warning); font-size: 13px; padding-left: 18px; }
-
-  .helper-text {
+  .meta-item .value {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .meta-item .value small {
+    font-family: var(--sans);
     font-size: 13px;
-    color: var(--text-tertiary);
-    line-height: 1.6;
-    margin: 0 0 2rem;
+    color: var(--ink-dim);
+    display: block;
+    margin-top: 2px;
   }
 
-  /* Print */
-  @media print {
-    body { background: white; color: black; }
-    .tabs { display: none; }
-    .week-panel { page-break-inside: avoid; margin-bottom: 1.5rem; border: 1px solid #ccc; }
-    #week-panels > * { display: block !important; }
+  /* SECTIONS */
+  .section { margin-bottom: 96px; scroll-margin-top: 32px; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: -0.02em;
+    flex: 1;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--accent-2);
   }
 
-  /* Responsive */
-  @media (max-width: 520px) {
-    .container { padding: 1.5rem 1rem 3rem; }
-    h1 { font-size: 24px; }
-    h2 { font-size: 18px; }
-    .day-row { grid-template-columns: 48px 1fr; }
-    .day-meta { grid-column: 2; text-align: left; padding-top: 2px; }
+  /* GOALS */
+  .goals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .goal {
+    background: var(--bg-2);
+    padding: 28px 24px;
+    transition: background 0.3s ease;
+  }
+  .goal:hover { background: var(--bg-3); }
+  .goal-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    letter-spacing: 0.15em;
+  }
+  .goal-text {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink);
   }
 
-  footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 0.5px solid var(--border);
-    font-size: 13px;
-    color: var(--text-tertiary);
+  /* MONTH TABLE */
+  .month-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  .month-table th,
+  .month-table td {
+    text-align: left;
+    padding: 18px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .month-table th {
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .month-table .week-num { color: var(--accent); font-weight: 700; }
+  .month-table .week-trip { color: var(--accent-2); font-weight: 700; }
+  .month-table .week-trip td { color: var(--accent-2); }
+
+  /* WEEK SCHEDULE */
+  .schedule {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .day-cell {
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    padding: 16px 12px;
     text-align: center;
+    transition: all 0.3s ease;
+  }
+  .day-cell.climb { border-color: var(--accent); }
+  .day-cell.gym { border-color: var(--accent-2); }
+  .day-cell.rest { opacity: 0.5; }
+  .day-cell .d-name {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .day-cell .d-label {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  .day-cell.climb .d-label { color: var(--accent); }
+  .day-cell.gym .d-label { color: var(--accent-2); }
+  .day-cell.rest .d-label { color: var(--ink-faint); font-style: italic; }
+  @media (max-width: 700px) {
+    .schedule { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* WEEK CARDS */
+  .week {
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .week.trip-week { border-color: var(--accent-2); }
+  .week-header {
+    padding: 28px 32px;
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .week-header h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+  }
+  .week-header h3 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .week-header .week-dates {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-dim);
+    letter-spacing: 0.05em;
+  }
+  .week-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 5px 12px;
+    border: 1px solid var(--accent);
+  }
+  .week-tag.trip {
+    color: var(--accent-2);
+    border-color: var(--accent-2);
+  }
+  .week-progress {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+  }
+  .week-progress strong { color: var(--accent); }
+
+  /* DAYS */
+  .day {
+    border-bottom: 1px solid var(--rule);
+    padding: 28px 32px;
+  }
+  .day:last-child { border-bottom: none; }
+  .day.rest { background: rgba(0,0,0,0.15); }
+  .day-head {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .day-name {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    min-width: 90px;
+  }
+  .day-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    flex: 1;
+  }
+  .day-duration {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+    letter-spacing: 0.1em;
+  }
+  .day.rest .day-title {
+    font-style: italic;
+    color: var(--ink-dim);
+    font-size: 18px;
+  }
+
+  /* CHECKLISTS */
+  .checklist { list-style: none; margin-top: 12px; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--rule);
+    transition: opacity 0.2s ease;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--ink-faint);
+    background: transparent;
+    margin-top: 3px;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s ease;
+    border-radius: 1px;
+  }
+  .checklist input[type="checkbox"]:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(212, 115, 43, 0.1);
+  }
+  .checklist input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .checklist input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bg);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .checklist label {
+    flex: 1;
+    cursor: pointer;
+    line-height: 1.5;
+    font-size: 15px;
+    color: var(--ink);
+    user-select: none;
+  }
+  .checklist li.done label {
+    color: var(--ink-faint);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+  .checklist label strong {
+    color: var(--accent-2);
+    font-weight: 600;
+  }
+  .checklist label em {
+    color: var(--ink-dim);
+    font-style: italic;
+  }
+
+  .subblock { margin-top: 22px; padding-left: 110px; }
+  @media (max-width: 700px) { .subblock { padding-left: 0; } }
+  .subblock-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  /* CALLOUTS */
+  .callout {
+    background: var(--bg-3);
+    border-left: 3px solid var(--accent);
+    padding: 22px 26px;
+    margin: 28px 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+  }
+  .callout.warn { border-color: var(--yellow); }
+  .callout.stop { border-color: var(--red); }
+  .callout strong {
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* TRIP BANNER */
+  .trip-banner {
+    background: linear-gradient(135deg, rgba(28, 36, 31, 0.9), rgba(22, 28, 24, 0.95));
+    border: 1px solid var(--accent-2);
+    padding: 40px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .trip-banner::before {
+    content: "▲";
+    position: absolute;
+    top: -50px;
+    right: -20px;
+    font-size: 220px;
+    color: var(--accent-2);
+    opacity: 0.07;
+    font-family: var(--serif);
+    line-height: 1;
+  }
+  .trip-banner h3 {
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: var(--accent-2);
+    position: relative;
+  }
+  .trip-banner .dates {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-dim);
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+  }
+  .trip-banner p {
+    color: var(--ink-dim);
+    line-height: 1.6;
+    max-width: 700px;
+    position: relative;
+  }
+
+  /* TRAFFIC LIGHT */
+  .traffic {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .light {
+    padding: 26px;
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    border-top-width: 4px;
+  }
+  .light.green { border-top-color: var(--green); }
+  .light.yellow { border-top-color: var(--yellow); }
+  .light.red { border-top-color: var(--red); }
+  .light-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .light.green .light-label { color: var(--green); }
+  .light.yellow .light-label { color: var(--yellow); }
+  .light.red .light-label { color: var(--red); }
+  .light p { font-size: 14px; line-height: 1.6; color: var(--ink-dim); }
+
+  /* CHECKPOINT */
+  .checkpoint {
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    padding: 32px;
+    margin-bottom: 20px;
+  }
+  .checkpoint h4 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .checkpoint .when {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+  }
+
+  /* RESET */
+  .reset-section {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  .reset-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: transparent;
+    border: 1px solid var(--rule);
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .reset-btn:hover {
+    color: var(--red);
+    border-color: var(--red);
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  footer p { margin-bottom: 8px; }
+
+  /* FADE-IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * {
+    animation: fadeUp 0.8s cubic-bezier(0.65, 0, 0.35, 1) both;
+  }
+  .hero .eyebrow { animation-delay: 0.05s; }
+  .hero .title { animation-delay: 0.15s; }
+  .hero .subtitle { animation-delay: 0.3s; }
+  .hero .meta-strip { animation-delay: 0.45s; }
+
+  @media (max-width: 600px) {
+    .container { padding: 60px 20px 80px; }
+    .day { padding: 24px 20px; }
+    .week-header { padding: 22px 20px; }
+    .progress-badge { display: none; }
   }
 </style>
 </head>
 <body>
+
+<div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+<div class="progress-badge"><span id="progressCount">0</span> / <span id="progressTotal">0</span> <strong>complete</strong></div>
+
 <div class="container">
 
-<header>
-  <h1>6-week alpinism prep plan</h1>
-  <p class="subtitle">Belgium → Alps · course June 14–19 · ~10 kg pack · zone 2 focus</p>
-</header>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Month 01 · Foundation phase</div>
+    <h1 class="title">June.<br><em>Base camp.</em></h1>
+    <p class="subtitle">Twenty-eight days to settle the pinky, sharpen the lead head, and lay the aerobic floor everything else will build on. Climb Mon, Thu, Sat. Gym Wed. Rest the rest.</p>
 
-<div class="stats">
-  <div class="stat">
-    <p class="stat-label">Weeks</p>
-    <p class="stat-value">6</p>
-  </div>
-  <div class="stat">
-    <p class="stat-label">Peak long effort</p>
-    <p class="stat-value">2 hours</p>
-  </div>
-  <div class="stat">
-    <p class="stat-label">Peak load</p>
-    <p class="stat-value">12 kg</p>
-  </div>
-  <div class="stat">
-    <p class="stat-label">Z2 share</p>
-    <p class="stat-value">~80%</p>
-  </div>
-</div>
-
-<section class="section">
-  <div class="section-header">
-    <h2>Weekly plan</h2>
-    <p>Tap a week to see the daily schedule and key workout.</p>
-  </div>
-
-  <div class="tabs" id="week-tabs">
-    <button class="tab active" data-week="1">Week 1</button>
-    <button class="tab" data-week="2">Week 2</button>
-    <button class="tab" data-week="3">Week 3</button>
-    <button class="tab" data-week="4">Week 4</button>
-    <button class="tab" data-week="5">Week 5</button>
-    <button class="tab" data-week="6">Week 6 taper</button>
-  </div>
-
-  <div id="week-panels"></div>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <h2>Daily warm-up · 8 minutes</h2>
-    <p>Before every session. No rest between movements.</p>
-  </div>
-
-  <div class="card">
-    <table>
-      <tbody>
-        <tr><td>Ankle circles + calf pumps</td><td style="text-align: right;">30s each direction, each foot</td></tr>
-        <tr><td>Leg swings (front-back, side-side)</td><td style="text-align: right;">10 each direction per leg</td></tr>
-        <tr><td>World's greatest stretch</td><td style="text-align: right;">4 per side</td></tr>
-        <tr><td>Glute bridges</td><td style="text-align: right;">15 reps</td></tr>
-        <tr><td>Monster walks</td><td style="text-align: right;">10 steps each direction</td></tr>
-        <tr><td>Bodyweight squats, slow</td><td style="text-align: right;">15 reps</td></tr>
-        <tr><td>Calf raises</td><td style="text-align: right;">20 reps</td></tr>
-      </tbody>
-    </table>
-    <p class="helper-text" style="margin: 12px 0 0;">For runs and hikes, add 3 min of easy walking. Cold-start running is the top cause of IT band flare-ups.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <h2>Prehab routine · 10–12 minutes</h2>
-    <p>4× per week minimum. Best on climbing days and after easy sessions.</p>
-  </div>
-
-  <div class="card-grid">
-    <div class="card">
-      <p class="card-title">IT band complex</p>
-      <ul>
-        <li>Side-lying clamshells — 3×15 each</li>
-        <li>Single-leg glute bridges — 3×12 each</li>
-        <li>Side-lying leg raises — 3×15 each</li>
-        <li>Copenhagen plank, knee version — 3×20s each</li>
-        <li>Standing hip hikes — 3×12 each</li>
-        <li>Foam roll TFL and quads, not the IT band itself</li>
-      </ul>
+    <div class="meta-strip">
+      <div class="meta-item">
+        <div class="label">Climb days</div>
+        <div class="value">Mon · Thu · Sat</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Gym day</div>
+        <div class="value">Wed</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Trip block</div>
+        <div class="value">Jun 13–21<br><small>Alpinism, maintenance only</small></div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Pinky status</div>
+        <div class="value">Yellow<br><small>No max fingers. No fingerboard.</small></div>
+      </div>
     </div>
-    <div class="card">
-      <p class="card-title">Plantar fascia complex</p>
-      <ul>
-        <li>Towel scrunches — 2×30s each foot</li>
-        <li>Marble pickups or toe yoga — 2×15 each</li>
-        <li>Calf raises, straight knee — 3×15</li>
-        <li>Calf raises, bent knee soleus — 3×15</li>
-        <li>Eccentric heel drops, 3s lower — 3×10 each</li>
-        <li>Frozen bottle roll — 2 min each, evenings</li>
-        <li>Tibialis raises — 3×15</li>
-      </ul>
+  </header>
+
+  <!-- GOALS -->
+  <section class="section" id="goals">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Goals for the month</h2>
     </div>
-  </div>
+    <div class="goals">
+      <div class="goal">
+        <div class="goal-num">01</div>
+        <div class="goal-text">Pinky moves from yellow → green, or shows clear weekly improvement.</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">02</div>
+        <div class="goal-text">Three baseline benchmarks logged in Week 1.</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">03</div>
+        <div class="goal-text">Clipping drills on every lead session, no exceptions.</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">04</div>
+        <div class="goal-text">ARC builds from 15 → 25 min, nose-breathing pace.</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">05</div>
+        <div class="goal-text">Sleep ≥ 7h average across the month. Tracked daily.</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">06</div>
+        <div class="goal-text">Zero fingerboard work. Climbing is your finger training.</div>
+      </div>
+    </div>
+  </section>
 
-  <div class="callout callout-info">
-    <strong>Morning ritual · 60 seconds, every day.</strong> Before getting out of bed, do 20 ankle pumps and 10 toe spreads on each foot. Plantar fascia tightens overnight; first morning steps are when re-injury happens.
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <h2>Strength progression</h2>
-    <p>Two sessions per week. Tuesday heavier, Saturday integrated or lighter.</p>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Exercise</th>
-          <th>Wk 1–2</th>
-          <th>Wk 3–4</th>
-          <th>Wk 5</th>
-          <th>Wk 6 taper</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Goblet/back squat</td><td>3×8</td><td>4×6</td><td>4×5 heavy</td><td>2×5 light</td></tr>
-        <tr><td>Romanian deadlift</td><td>3×10</td><td>3×8</td><td>4×6</td><td>2×6 light</td></tr>
-        <tr><td>Bulgarian split squat</td><td>3×10 each</td><td>3×12 each</td><td>4×10 each</td><td>2×8 each</td></tr>
-        <tr><td>Weighted step-ups</td><td>3×10, BW</td><td>3×12, +5kg</td><td>3×15, +10kg</td><td>2×10, +5kg</td></tr>
-        <tr><td>Walking lunges</td><td>3×10 each</td><td>3×12 w/ DBs</td><td>3×15 w/ DBs</td><td>skip</td></tr>
-        <tr><td>Calf raises, loaded</td><td>3×15</td><td>3×20</td><td>4×15</td><td>2×15</td></tr>
-        <tr><td>Hanging knee raises</td><td>3×10</td><td>3×12</td><td>3×15</td><td>2×10</td></tr>
-        <tr><td>Pallof press</td><td>3×12 each</td><td>3×15 each</td><td>3×15 each</td><td>2×12 each</td></tr>
-        <tr><td>Side plank</td><td>3×30s each</td><td>3×45s each</td><td>3×60s each</td><td>2×30s each</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="helper-text">Weighted step-up is your most important exercise — closest gym analog to mountain hiking. Knee-height box, drive through the heel, control the descent.</p>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <h2>Backpack progression</h2>
-    <p>Use real hiking gear — load distribution matters and you need to break in your pack.</p>
-  </div>
-
-  <div class="table-wrap">
-    <table>
+  <!-- OVERVIEW -->
+  <section class="section" id="overview">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Month at a glance</h2>
+    </div>
+    <table class="month-table">
       <thead>
         <tr>
           <th>Week</th>
-          <th>Long effort</th>
-          <th>Weekday hike</th>
+          <th>Dates</th>
+          <th>Focus</th>
+          <th>Notes</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>1</td><td>4 kg</td><td>none</td></tr>
-        <tr><td>2</td><td>6 kg</td><td>4 kg</td></tr>
-        <tr><td>3</td><td>8 kg</td><td>6 kg</td></tr>
-        <tr><td>4</td><td>10 kg</td><td>8 kg</td></tr>
-        <tr><td>5</td><td>12 kg overload</td><td>8 kg</td></tr>
-        <tr><td>6</td><td>6 kg → 0 kg</td><td>none</td></tr>
+        <tr><td class="week-num">W1</td><td>Jun 1–7</td><td>Ease-in + baselines</td><td>Low intensity, set tests, observe pinky</td></tr>
+        <tr><td class="week-num">W2</td><td>Jun 8–12</td><td>Build, cut short by trip</td><td>5 days — Mon climb, Wed gym, Thu climb</td></tr>
+        <tr class="week-trip"><td>★</td><td>Jun 13–21</td><td>Alpinism trip</td><td>Maintenance protocol only</td></tr>
+        <tr><td class="week-num">W4</td><td>Jun 22–28</td><td>Re-entry at 70%</td><td>Rebuild rhythm, no testing</td></tr>
+        <tr><td class="week-num">W5</td><td>Jun 29–30</td><td>Transition</td><td>Roll into July plan</td></tr>
       </tbody>
     </table>
-  </div>
-  <p class="helper-text">Week 5 overload at 12 kg is intentional — at 10 kg on the actual course your pack will feel light.</p>
-</section>
 
-<section class="section">
-  <div class="section-header">
-    <h2>Treadmill, stairs, heart-rate zones</h2>
-  </div>
-
-  <div class="card-grid">
-    <div class="card">
-      <p class="card-title">Treadmill incline</p>
-      <ul>
-        <li>Z2 incline walk: 8–12% @ 5.0–5.5 km/h</li>
-        <li>Sustained uphill: 12–15% @ 4.5–5.0 km/h</li>
-        <li>Hard intervals: 15% @ 5.5–6.0 km/h</li>
-      </ul>
-      <p class="helper-text" style="margin: 12px 0 0;">Uphill work is always walking pace — loads the posterior chain like hiking and protects IT band and plantar fascia.</p>
+    <div style="margin-top: 40px;">
+      <div class="subblock-title">Weekly shape</div>
+      <div class="schedule">
+        <div class="day-cell climb"><div class="d-name">Mon</div><div class="d-label">Lead + ARC</div></div>
+        <div class="day-cell rest"><div class="d-name">Tue</div><div class="d-label">Rest</div></div>
+        <div class="day-cell gym"><div class="d-name">Wed</div><div class="d-label">Gym + prehab</div></div>
+        <div class="day-cell climb"><div class="d-name">Thu</div><div class="d-label">Bouldering</div></div>
+        <div class="day-cell rest"><div class="d-name">Fri</div><div class="d-label">Rest</div></div>
+        <div class="day-cell climb"><div class="d-name">Sat</div><div class="d-label">Lead + clipping</div></div>
+        <div class="day-cell rest"><div class="d-name">Sun</div><div class="d-label">Rest</div></div>
+      </div>
     </div>
-    <div class="card">
-      <p class="card-title">Stair machine</p>
-      <ul>
-        <li>Z2 steady: level 6–8</li>
-        <li>Tempo: level 9–11</li>
-        <li>Hard: level 12–14</li>
-      </ul>
-      <p class="helper-text" style="margin: 12px 0 0;">Light touch on rails for balance only — leaning defeats the purpose.</p>
+  </section>
+
+  <!-- WEEK 1 -->
+  <section class="section" id="week1">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Week One · <em>Baselines</em></h2>
     </div>
-    <div class="card">
-      <p class="card-title">Heart-rate zones</p>
-      <ul>
-        <li>Z2: RPE 3–4, full sentences, ~130–150 bpm</li>
-        <li>Z3: RPE 5–6, short phrases, ~150–165 bpm</li>
-        <li>Z4: RPE 7–8, single words, ~165–175 bpm</li>
-      </ul>
-      <p class="helper-text" style="margin: 12px 0 0;">~80% of training stays in Z2. The discipline is staying easy when it feels too easy.</p>
+
+    <div class="week">
+      <div class="week-header">
+        <h3>Week 1 — <em>Ease in, take measurements</em></h3>
+        <span class="week-dates">JUN 1 — JUN 7</span>
+        <span class="week-tag">Foundation</span>
+      </div>
+
+      <!-- Mon -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Mon · 01</span>
+          <span class="day-title">Lead technique + ARC + baseline tests</span>
+          <span class="day-duration">90 min</span>
+        </div>
+        <ul class="checklist" data-day="w1-mon">
+          <li><input type="checkbox" id="w1mon-1"><label for="w1mon-1"><strong>15 min warm-up:</strong> pulse raise, shoulder CARs, easy traverse on jugs</label></li>
+          <li><input type="checkbox" id="w1mon-2"><label for="w1mon-2"><strong>Baseline test 1 — Max hang:</strong> 20 mm edge, half-crimp, 10 sec. Find current +kg. <em>Stop if pinky reports anything &gt; 1/10.</em></label></li>
+          <li><input type="checkbox" id="w1mon-3"><label for="w1mon-3"><strong>Baseline test 2 — Max weighted pull-up:</strong> one true rep</label></li>
+          <li><input type="checkbox" id="w1mon-4"><label for="w1mon-4"><strong>Log:</strong> bodyweight this morning + both test results in journal</label></li>
+          <li><input type="checkbox" id="w1mon-5"><label for="w1mon-5"><strong>3 lead routes at 5+/6a</strong> — one technique cue per route: silent feet, then straight arms, then hip turn-in</label></li>
+          <li><input type="checkbox" id="w1mon-6"><label for="w1mon-6"><strong>ARC: 15 min continuous</strong> easy climbing or traverse on 5/5+. Nose-breathing pace. Stop if forearms pump hard.</label></li>
+          <li><input type="checkbox" id="w1mon-7"><label for="w1mon-7">5 min cooldown — finger tendon glides, wrist mobility</label></li>
+        </ul>
+      </div>
+
+      <!-- Tue -->
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Tue · 02</span>
+          <span class="day-title">Rest + mobility</span>
+          <span class="day-duration">15 min</span>
+        </div>
+        <ul class="checklist" data-day="w1-tue">
+          <li><input type="checkbox" id="w1tue-1"><label for="w1tue-1">Hip openers, thoracic rotations, shoulder CARs</label></li>
+          <li><input type="checkbox" id="w1tue-2"><label for="w1tue-2">Finger tendon glides — slow, pain-free, both hands</label></li>
+          <li><input type="checkbox" id="w1tue-3"><label for="w1tue-3"><strong>Sleep ≥ 7h.</strong> Wind-down alarm an hour before lights out.</label></li>
+        </ul>
+      </div>
+
+      <!-- Wed -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Wed · 03</span>
+          <span class="day-title">Gym strength + prehab</span>
+          <span class="day-duration">75 min</span>
+        </div>
+        <ul class="checklist" data-day="w1-wed">
+          <li><input type="checkbox" id="w1wed-1"><label for="w1wed-1"><strong>Warm-up 10 min:</strong> bike or row easy, band pull-aparts 2×15, scap pull-ups 2×8, wrist circles</label></li>
+        </ul>
+        <div class="subblock">
+          <div class="subblock-title">Main lifts</div>
+          <ul class="checklist" data-day="w1-wed-main">
+            <li><input type="checkbox" id="w1wed-A"><label for="w1wed-A"><strong>A · Goblet squat</strong> — 3×8, moderate (something you could do 12 of)</label></li>
+            <li><input type="checkbox" id="w1wed-B"><label for="w1wed-B"><strong>B · Romanian deadlift, dumbbells</strong> — 3×8, focus on hinge form</label></li>
+            <li><input type="checkbox" id="w1wed-C"><label for="w1wed-C"><strong>C · Weighted pull-up</strong> — 4×5 @ +4 kg. Clean reps, well under your max.</label></li>
+            <li><input type="checkbox" id="w1wed-D"><label for="w1wed-D"><strong>D · Dumbbell bench press</strong> — 3×8</label></li>
+            <li><input type="checkbox" id="w1wed-E"><label for="w1wed-E"><strong>E · Single-arm DB row</strong> — 3×10 per side</label></li>
+          </ul>
+        </div>
+        <div class="subblock">
+          <div class="subblock-title">Prehab — 3 rounds, minimal rest</div>
+          <ul class="checklist" data-day="w1-wed-prehab">
+            <li><input type="checkbox" id="w1wed-P1"><label for="w1wed-P1"><strong>Wrist extensor eccentrics</strong> — 15 reps each side, 3 sec lower, light DB. <em>Key one for golfer's elbow.</em></label></li>
+            <li><input type="checkbox" id="w1wed-P2"><label for="w1wed-P2"><strong>Reverse wrist curls</strong> — 12 reps each side</label></li>
+            <li><input type="checkbox" id="w1wed-P3"><label for="w1wed-P3"><strong>Band external rotation</strong> — 15 reps each side</label></li>
+            <li><input type="checkbox" id="w1wed-P4"><label for="w1wed-P4"><strong>Scapular push-ups</strong> — 10 reps</label></li>
+          </ul>
+        </div>
+        <div class="subblock">
+          <div class="subblock-title">Cooldown</div>
+          <ul class="checklist" data-day="w1-wed-cool">
+            <li><input type="checkbox" id="w1wed-Z"><label for="w1wed-Z">5 min — gentle forearm stretch, hip flexor stretch</label></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Thu -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Thu · 04</span>
+          <span class="day-title">Bouldering technique</span>
+          <span class="day-duration">75 min</span>
+        </div>
+        <ul class="checklist" data-day="w1-thu">
+          <li><input type="checkbox" id="w1thu-1"><label for="w1thu-1"><strong>15 min warm-up</strong> — big holds only, easy traverse</label></li>
+          <li><input type="checkbox" id="w1thu-2"><label for="w1thu-2"><strong>Technique drills (20 min):</strong> hover-hand (pause 2s before grabbing), silent feet, downclimb every problem</label></li>
+          <li><input type="checkbox" id="w1thu-3"><label for="w1thu-3"><strong>5 boulders at flash level</strong>, two grades below limit. Movement quality, not difficulty.</label></li>
+          <li><input type="checkbox" id="w1thu-4"><label for="w1thu-4"><strong>No crimps this week.</strong> Open hand, jugs, slopers only.</label></li>
+          <li><input type="checkbox" id="w1thu-5"><label for="w1thu-5">10 min cooldown + finger/wrist mobility</label></li>
+        </ul>
+      </div>
+
+      <!-- Fri -->
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Fri · 05</span>
+          <span class="day-title">Rest</span>
+          <span class="day-duration">—</span>
+        </div>
+        <ul class="checklist" data-day="w1-fri">
+          <li><input type="checkbox" id="w1fri-1"><label for="w1fri-1">Optional 10 min mobility, daily pinky routine</label></li>
+        </ul>
+      </div>
+
+      <!-- Sat -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Sat · 06</span>
+          <span class="day-title">Lead volume + clipping</span>
+          <span class="day-duration">90 min</span>
+        </div>
+        <ul class="checklist" data-day="w1-sat">
+          <li><input type="checkbox" id="w1sat-1"><label for="w1sat-1"><strong>15 min warm-up</strong></label></li>
+          <li><input type="checkbox" id="w1sat-2"><label for="w1sat-2"><strong>Clipping drill (2 routes):</strong> pick a known 5+ route, climb it twice, clip each draw from 3 positions (hip / chest / eye level)</label></li>
+          <li><input type="checkbox" id="w1sat-3"><label for="w1sat-3"><strong>4 lead routes at 6a–6b:</strong> 2 onsight, 2 repeats</label></li>
+          <li><input type="checkbox" id="w1sat-4"><label for="w1sat-4"><strong>1 head-game route:</strong> lead 5+/6a, take a planned fall above each of the first 4 bolts. Exhale on the fall.</label></li>
+          <li><input type="checkbox" id="w1sat-5"><label for="w1sat-5">Cooldown</label></li>
+        </ul>
+      </div>
+
+      <!-- Sun -->
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Sun · 07</span>
+          <span class="day-title">Rest</span>
+          <span class="day-duration">—</span>
+        </div>
+        <ul class="checklist" data-day="w1-sun">
+          <li><input type="checkbox" id="w1sun-1"><label for="w1sun-1">Optional 30 min walk or swim</label></li>
+          <li><input type="checkbox" id="w1sun-2"><label for="w1sun-2">5 min pinky/wrist routine</label></li>
+          <li><input type="checkbox" id="w1sun-3"><label for="w1sun-3"><strong>Weekly review (5 min):</strong> log totals, pinky trend, sleep average, one thing to adjust</label></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="section-header">
-    <h2>Recovery basics</h2>
-  </div>
+  <!-- WEEK 2 -->
+  <section class="section" id="week2">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Week Two · <em>Five days, then pack</em></h2>
+    </div>
 
-  <div class="card">
-    <p class="card-title">Sleep</p>
-    <p style="font-size: 14px; color: var(--text-secondary); margin: 0 0 16px;">8 hours minimum, especially Tuesday post-strength and Saturday post-long. If consistently exhausted, cut a session — not sleep.</p>
+    <div class="callout">
+      You leave Saturday Jun 13 for the alps. That cuts this week to <strong>Mon, Wed, Thu</strong> — three sessions, then start packing. Don't try to squeeze in a Saturday climb before the trip — show up to the mountains rested.
+    </div>
 
-    <p class="card-title">Nutrition</p>
-    <p style="font-size: 14px; color: var(--text-secondary); margin: 0 0 16px;">Carbs around training. Protein 1.6–2.0 g/kg daily. Long efforts: practice 30–60 g carbs/hour with food + gels you can replicate on the mountain. 500 ml water within an hour of finishing.</p>
+    <div class="week">
+      <div class="week-header">
+        <h3>Week 2 — <em>Slight bump, then taper</em></h3>
+        <span class="week-dates">JUN 8 — JUN 12</span>
+        <span class="week-tag">Foundation</span>
+      </div>
 
-    <p class="card-title">Red flags</p>
-    <ul>
-      <li>Resting HR up &gt;7 bpm for 2+ days → extra rest day</li>
-      <li>Sleep quality dropping despite good hygiene → reduce volume 20%</li>
-      <li>Mood/motivation crash → almost always overtraining; pull back</li>
-      <li>Climbing performance dropping → ease the strength work</li>
-    </ul>
-  </div>
-</section>
+      <!-- Mon -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Mon · 08</span>
+          <span class="day-title">Lead technique + ARC (bump)</span>
+          <span class="day-duration">95 min</span>
+        </div>
+        <ul class="checklist" data-day="w2-mon">
+          <li><input type="checkbox" id="w2mon-1"><label for="w2mon-1">15 min warm-up</label></li>
+          <li><input type="checkbox" id="w2mon-2"><label for="w2mon-2"><strong>3 lead routes at 5+/6a</strong> — pick a fresh technique cue: drop-knee, frog, flagging</label></li>
+          <li><input type="checkbox" id="w2mon-3"><label for="w2mon-3"><strong>ARC: 20 min</strong> continuous (up from 15). Still nose-breathing pace.</label></li>
+          <li><input type="checkbox" id="w2mon-4"><label for="w2mon-4">Cooldown + mobility</label></li>
+        </ul>
+      </div>
 
-<section class="section">
-  <div class="section-header">
-    <h2>Pain management</h2>
-    <p>If pain is sharp, localized, and changes how you move, stop. Muscle fatigue that resolves with warm-up is fine.</p>
-  </div>
+      <!-- Tue -->
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Tue · 09</span>
+          <span class="day-title">Rest + mobility</span>
+          <span class="day-duration">15 min</span>
+        </div>
+        <ul class="checklist" data-day="w2-tue">
+          <li><input type="checkbox" id="w2tue-1"><label for="w2tue-1">Full mobility routine</label></li>
+          <li><input type="checkbox" id="w2tue-2"><label for="w2tue-2">Start packing for the trip — gear check</label></li>
+        </ul>
+      </div>
 
-  <div class="pain-grid">
-    <div class="pain-card">
-      <p class="card-title">IT band</p>
-      <p><strong>Signs:</strong> sharp lateral knee pain, especially descending or after 20–30 min running.</p>
-      <ul>
-        <li>Mild tightness → finish easy, prehab + ice 15 min</li>
-        <li>Pain that changes gait → STOP. Stair machine or pool only, 3–5 days</li>
-        <li>Pain at rest or on stairs → 5–7 days off impact, see a physio</li>
+      <!-- Wed -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Wed · 10</span>
+          <span class="day-title">Gym strength + prehab</span>
+          <span class="day-duration">75 min</span>
+        </div>
+        <ul class="checklist" data-day="w2-wed">
+          <li><input type="checkbox" id="w2wed-1"><label for="w2wed-1">Warm-up 10 min — same as Week 1</label></li>
+        </ul>
+        <div class="subblock">
+          <div class="subblock-title">Main lifts — only progress if Week 1 felt clean</div>
+          <ul class="checklist" data-day="w2-wed-main">
+            <li><input type="checkbox" id="w2wed-A"><label for="w2wed-A"><strong>A · Goblet squat</strong> — 3×8, same load</label></li>
+            <li><input type="checkbox" id="w2wed-B"><label for="w2wed-B"><strong>B · RDL DB</strong> — 3×8, same load</label></li>
+            <li><input type="checkbox" id="w2wed-C"><label for="w2wed-C"><strong>C · Weighted pull-up</strong> — 4×5 @ +6 kg <em>(only if Week 1 was clean)</em></label></li>
+            <li><input type="checkbox" id="w2wed-D"><label for="w2wed-D"><strong>D · DB bench</strong> — 3×8, same load</label></li>
+            <li><input type="checkbox" id="w2wed-E"><label for="w2wed-E"><strong>E · DB row</strong> — 3×10/side, same load</label></li>
+          </ul>
+        </div>
+        <div class="subblock">
+          <div class="subblock-title">Prehab — same 3 rounds</div>
+          <ul class="checklist" data-day="w2-wed-prehab">
+            <li><input type="checkbox" id="w2wed-P"><label for="w2wed-P">Full prehab block (eccentrics, reverse curls, ER, scap)</label></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Thu -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Thu · 11</span>
+          <span class="day-title">Bouldering — light technique session</span>
+          <span class="day-duration">60 min</span>
+        </div>
+        <ul class="checklist" data-day="w2-thu">
+          <li><input type="checkbox" id="w2thu-1"><label for="w2thu-1">Warm-up</label></li>
+          <li><input type="checkbox" id="w2thu-2"><label for="w2thu-2"><strong>Technique drills:</strong> no-match, glue feet</label></li>
+          <li><input type="checkbox" id="w2thu-3"><label for="w2thu-3"><strong>5 boulders at flash level</strong> + 1 boulder "flash + 1" only if pinky symptom-free, on good holds</label></li>
+          <li><input type="checkbox" id="w2thu-4"><label for="w2thu-4"><em>Cut short rather than risk a tweak before the trip.</em></label></li>
+          <li><input type="checkbox" id="w2thu-5"><label for="w2thu-5">Cooldown</label></li>
+        </ul>
+      </div>
+
+      <!-- Fri -->
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Fri · 12</span>
+          <span class="day-title">Rest · finish packing</span>
+          <span class="day-duration">—</span>
+        </div>
+        <ul class="checklist" data-day="w2-fri">
+          <li><input type="checkbox" id="w2fri-1"><label for="w2fri-1">Pinky routine, mobility</label></li>
+          <li><input type="checkbox" id="w2fri-2"><label for="w2fri-2"><strong>End-of-Week-2 check-in (5 min):</strong> pinky trend vs Jun 1 · sleep average · clipping fluency · any session RPE &gt; 8?</label></li>
+          <li><input type="checkbox" id="w2fri-3"><label for="w2fri-3">Pack tape, putty, mobility ball for the trip</label></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIP -->
+  <section class="section" id="trip">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">The Trip · <em>Maintenance only</em></h2>
+    </div>
+
+    <div class="trip-banner">
+      <h3>Alpinism · 9 days</h3>
+      <div class="dates">JUN 13 — JUN 21</div>
+      <p>The mountains are not a training session. The job is to come home with hands intact, sleep banked, and motivation high. No making up missed climbing. No heroic packs. Trekking poles loose in the grip. Pinky taped from day one.</p>
+    </div>
+
+    <div class="week trip-week">
+      <div class="week-header">
+        <h3>Daily on the mountain</h3>
+        <span class="week-tag trip">Maintenance</span>
+      </div>
+
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">AM · 5 min</span>
+          <span class="day-title">Morning routine</span>
+        </div>
+        <ul class="checklist" data-day="trip-am">
+          <li><input type="checkbox" id="trip-am1"><label for="trip-am1">Finger tendon glides × 10</label></li>
+          <li><input type="checkbox" id="trip-am2"><label for="trip-am2">Wrist circles, fist open/close × 20 each hand</label></li>
+          <li><input type="checkbox" id="trip-am3"><label for="trip-am3"><strong>Tape left pinky to ring finger</strong> before any rope handling or scrambling</label></li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">PM · 5 min</span>
+          <span class="day-title">Evening routine</span>
+        </div>
+        <ul class="checklist" data-day="trip-pm">
+          <li><input type="checkbox" id="trip-pm1"><label for="trip-pm1">General mobility — hips, shoulders, thoracic</label></li>
+          <li><input type="checkbox" id="trip-pm2"><label for="trip-pm2">Pinky status check 0–10. Note any flare in journal.</label></li>
+          <li><input type="checkbox" id="trip-pm3"><label for="trip-pm3"><strong>Sleep target: 8 h.</strong> Altitude eats recovery.</label></li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">2× in trip</span>
+          <span class="day-title">Optional bodyweight session (15 min)</span>
+        </div>
+        <ul class="checklist" data-day="trip-bw">
+          <li><input type="checkbox" id="trip-bw1"><label for="trip-bw1">Push-ups 3×10</label></li>
+          <li><input type="checkbox" id="trip-bw2"><label for="trip-bw2">Inverted rows or pull-ups if a bar exists 3×5</label></li>
+          <li><input type="checkbox" id="trip-bw3"><label for="trip-bw3">Squats 3×15</label></li>
+          <li><input type="checkbox" id="trip-bw4"><label for="trip-bw4">Plank 3×30 s</label></li>
+          <li><input type="checkbox" id="trip-bw5"><label for="trip-bw5">Wrist extensor eccentrics with anything weighted 2×15/side</label></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <strong>Trip rules.</strong> Pack weight ideally under 15 kg. Trekking poles: light grip, use the strap. Belay/rope handling can aggravate the pinky — glove or tape. Sleep matters more at altitude — protect it.
+    </div>
+  </section>
+
+  <!-- WEEK 4 -->
+  <section class="section" id="week4">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Week Four · <em>Re-entry at 70%</em></h2>
+    </div>
+
+    <div class="callout warn">
+      You return Sun Jun 21. <strong>The first climbing session back runs at 70% load.</strong> Don't try to make up the trip — pick up at Week 1 intensity, not Week 2. If the pinky flared on the trip, defer climbing another 2–3 days and do mobility only.
+    </div>
+
+    <div class="week">
+      <div class="week-header">
+        <h3>Week 4 — <em>Rebuild rhythm</em></h3>
+        <span class="week-dates">JUN 22 — JUN 28</span>
+        <span class="week-tag">Re-entry</span>
+      </div>
+
+      <!-- Mon -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Mon · 22</span>
+          <span class="day-title">Lead technique + short ARC</span>
+          <span class="day-duration">75 min</span>
+        </div>
+        <ul class="checklist" data-day="w4-mon">
+          <li><input type="checkbox" id="w4mon-1"><label for="w4mon-1">15 min warm-up — extra thorough after travel</label></li>
+          <li><input type="checkbox" id="w4mon-2"><label for="w4mon-2"><strong>3 routes at 5+/6a</strong> — focus on clipping fluency, the easiest skill to lose on a trip</label></li>
+          <li><input type="checkbox" id="w4mon-3"><label for="w4mon-3"><strong>ARC: 15 min</strong> (back to Week 1 volume)</label></li>
+          <li><input type="checkbox" id="w4mon-4"><label for="w4mon-4"><strong>RPE check:</strong> should feel 6/10 or lower. If 8+, you came back too hard.</label></li>
+        </ul>
+      </div>
+
+      <!-- Tue -->
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Tue · 23</span>
+          <span class="day-title">Rest + mobility</span>
+        </div>
+        <ul class="checklist" data-day="w4-tue">
+          <li><input type="checkbox" id="w4tue-1"><label for="w4tue-1">Full mobility</label></li>
+          <li><input type="checkbox" id="w4tue-2"><label for="w4tue-2">Pinky status check vs pre-trip baseline</label></li>
+        </ul>
+      </div>
+
+      <!-- Wed -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Wed · 24</span>
+          <span class="day-title">Gym — Week 1 loads</span>
+          <span class="day-duration">75 min</span>
+        </div>
+        <ul class="checklist" data-day="w4-wed">
+          <li><input type="checkbox" id="w4wed-1"><label for="w4wed-1">Warm-up</label></li>
+          <li><input type="checkbox" id="w4wed-2"><label for="w4wed-2"><strong>Same lifts as Week 1, same loads.</strong> No bump.</label></li>
+          <li><input type="checkbox" id="w4wed-3"><label for="w4wed-3">Full prehab block</label></li>
+          <li><input type="checkbox" id="w4wed-4"><label for="w4wed-4">Cooldown</label></li>
+        </ul>
+      </div>
+
+      <!-- Thu -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Thu · 25</span>
+          <span class="day-title">Bouldering — easy technique</span>
+          <span class="day-duration">60 min</span>
+        </div>
+        <ul class="checklist" data-day="w4-thu">
+          <li><input type="checkbox" id="w4thu-1"><label for="w4thu-1">Warm-up</label></li>
+          <li><input type="checkbox" id="w4thu-2"><label for="w4thu-2">Technique drills — pick one favourite, repeat it</label></li>
+          <li><input type="checkbox" id="w4thu-3"><label for="w4thu-3"><strong>4 boulders at flash level, big holds.</strong> No limit attempts.</label></li>
+          <li><input type="checkbox" id="w4thu-4"><label for="w4thu-4">Cooldown</label></li>
+        </ul>
+      </div>
+
+      <!-- Fri -->
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Fri · 26</span>
+          <span class="day-title">Rest</span>
+        </div>
+        <ul class="checklist" data-day="w4-fri">
+          <li><input type="checkbox" id="w4fri-1"><label for="w4fri-1">Pinky routine, mobility</label></li>
+        </ul>
+      </div>
+
+      <!-- Sat -->
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Sat · 27</span>
+          <span class="day-title">Lead volume + clipping (full)</span>
+          <span class="day-duration">90 min</span>
+        </div>
+        <ul class="checklist" data-day="w4-sat">
+          <li><input type="checkbox" id="w4sat-1"><label for="w4sat-1">Warm-up</label></li>
+          <li><input type="checkbox" id="w4sat-2"><label for="w4sat-2">Clipping drill — 2 routes</label></li>
+          <li><input type="checkbox" id="w4sat-3"><label for="w4sat-3"><strong>4 lead routes at 6a–6b</strong></label></li>
+          <li><input type="checkbox" id="w4sat-4"><label for="w4sat-4">1 head-game route with planned falls</label></li>
+          <li><input type="checkbox" id="w4sat-5"><label for="w4sat-5">Cooldown</label></li>
+        </ul>
+      </div>
+
+      <!-- Sun -->
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Sun · 28</span>
+          <span class="day-title">Rest</span>
+        </div>
+        <ul class="checklist" data-day="w4-sun">
+          <li><input type="checkbox" id="w4sun-1"><label for="w4sun-1">Weekly review — note post-trip status</label></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEEK 5 -->
+  <section class="section" id="week5">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Week Five · <em>Roll into July</em></h2>
+    </div>
+
+    <div class="week">
+      <div class="week-header">
+        <h3>Week 5 — <em>Two days, transition</em></h3>
+        <span class="week-dates">JUN 29 — JUN 30</span>
+        <span class="week-tag">Bridge</span>
+      </div>
+
+      <div class="day">
+        <div class="day-head">
+          <span class="day-name">Mon · 29</span>
+          <span class="day-title">Lead technique + ARC</span>
+          <span class="day-duration">90 min</span>
+        </div>
+        <ul class="checklist" data-day="w5-mon">
+          <li><input type="checkbox" id="w5mon-1"><label for="w5mon-1">Warm-up</label></li>
+          <li><input type="checkbox" id="w5mon-2"><label for="w5mon-2">3 routes at 5+/6a, clipping focus</label></li>
+          <li><input type="checkbox" id="w5mon-3"><label for="w5mon-3"><strong>ARC: 20 min</strong> if Week 4 felt clean</label></li>
+          <li><input type="checkbox" id="w5mon-4"><label for="w5mon-4">Cooldown</label></li>
+        </ul>
+      </div>
+
+      <div class="day rest">
+        <div class="day-head">
+          <span class="day-name">Tue · 30</span>
+          <span class="day-title">Rest — month complete</span>
+        </div>
+        <ul class="checklist" data-day="w5-tue">
+          <li><input type="checkbox" id="w5tue-1"><label for="w5tue-1"><strong>End-of-month review</strong> — see checkpoints below, send notes for July plan</label></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAFFIC LIGHTS -->
+  <section class="section" id="rules">
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Daily traffic light · <em>Pinky</em></h2>
+    </div>
+    <p style="color: var(--ink-dim); margin-bottom: 8px;">Check each morning before climbing. The lower light wins — never argue yourself up.</p>
+    <div class="traffic">
+      <div class="light green">
+        <div class="light-label">Green</div>
+        <p>No symptoms. No morning stiffness. Pain-free to press on the right side of the pinky. <strong style="color: var(--ink);">Train as planned.</strong></p>
+      </div>
+      <div class="light yellow">
+        <div class="light-label">Yellow</div>
+        <p>Mild presence, no pain on climbing. Train, but <strong style="color: var(--ink);">no crimps smaller than 20 mm, no limit boulders, skip any fingerboard.</strong> This is the default for June.</p>
+      </div>
+      <div class="light red">
+        <div class="light-label">Red</div>
+        <p>Pain on climb, sharp pain on press, swelling, or pain &gt; 3/10. <strong style="color: var(--ink);">Stop the session. Ice 10 min. Rest 2–3 days. Restart at yellow.</strong> Two reds in two weeks → physio re-visit.</p>
+      </div>
+    </div>
+
+    <div class="callout stop" style="margin-top: 32px;">
+      <strong>Stop and seek in-person assessment if:</strong> sharp pain on a specific move · swelling or visible deformity at any joint · audible pop or snap · pain at night that wakes you · loss of grip strength · numbness or tingling in any finger.
+    </div>
+  </section>
+
+  <!-- CHECKPOINTS -->
+  <section class="section" id="checkpoints">
+    <div class="section-head">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Checkpoints</h2>
+    </div>
+
+    <div class="checkpoint">
+      <div class="when">End of Week 2 · Jun 12</div>
+      <h4>Pre-trip pulse check</h4>
+      <ul class="checklist" data-day="cp-w2">
+        <li><input type="checkbox" id="cp-w2-1"><label for="cp-w2-1">Pinky 0–10 trend vs Jun 1 — better, same, worse?</label></li>
+        <li><input type="checkbox" id="cp-w2-2"><label for="cp-w2-2">Sleep average — actually hit 7 h?</label></li>
+        <li><input type="checkbox" id="cp-w2-3"><label for="cp-w2-3">Clipping — which draw positions still feel rushed?</label></li>
+        <li><input type="checkbox" id="cp-w2-4"><label for="cp-w2-4">Any session RPE &gt; 8/10 this week? That's a flag.</label></li>
       </ul>
     </div>
-    <div class="pain-card">
-      <p class="card-title">Plantar fascia</p>
-      <p><strong>Signs:</strong> sharp heel pain on first morning steps, arch pain after long efforts.</p>
-      <ul>
-        <li>Mild morning stiffness → eccentric heel drops, frozen bottle</li>
-        <li>Pain during session → stop, switch to stair machine 3 days</li>
-        <li>Persistent pain → reduce volume 30%, check shoes/heel cup</li>
+
+    <div class="checkpoint">
+      <div class="when">End of Week 4 · Jun 28</div>
+      <h4>Post-trip status</h4>
+      <ul class="checklist" data-day="cp-w4">
+        <li><input type="checkbox" id="cp-w4-1"><label for="cp-w4-1">Re-entry session RPE — should be 6/10 or lower</label></li>
+        <li><input type="checkbox" id="cp-w4-2"><label for="cp-w4-2">Pinky vs pre-trip — alpinism shouldn't have aggravated it</label></li>
+        <li><input type="checkbox" id="cp-w4-3"><label for="cp-w4-3">Energy, sleep, motivation — coming back too hot is the #1 mistake</label></li>
       </ul>
     </div>
+
+    <div class="checkpoint">
+      <div class="when">End of Month · Jun 30</div>
+      <h4>Send to coach for July plan</h4>
+      <ul class="checklist" data-day="cp-month">
+        <li><input type="checkbox" id="cp-m-1"><label for="cp-m-1">Baseline numbers — max hang, max pull, bodyweight</label></li>
+        <li><input type="checkbox" id="cp-m-2"><label for="cp-m-2">Pinky status — colour at end of month, any flares</label></li>
+        <li><input type="checkbox" id="cp-m-3"><label for="cp-m-3">Elbow status — any golfer's elbow flares on gym day?</label></li>
+        <li><input type="checkbox" id="cp-m-4"><label for="cp-m-4">Physio findings — diagnosis, rehab protocol given</label></li>
+        <li><input type="checkbox" id="cp-m-5"><label for="cp-m-5">Sleep average for the month</label></li>
+        <li><input type="checkbox" id="cp-m-6"><label for="cp-m-6">One thing that went well, one thing to change</label></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="reset-section">
+    <button class="reset-btn" id="resetBtn">Reset all progress</button>
   </div>
 
-  <div class="callout callout-info">
-    Boots and pack on your body for every weekend session by Week 3. Blisters and pack-fit issues will ruin the course before fitness gaps will.
-  </div>
-</section>
-
-<footer>
-  <p>Built for a single climber's prep. Not medical advice — listen to your body and consult a physio if pain persists.</p>
-</footer>
+  <footer>
+    <p>Road to 7a · Month 01 of 12</p>
+    <p>Sleep is part of the program.</p>
+  </footer>
 
 </div>
 
 <script>
-  const weeks = {
-    1: {
-      theme: "Baseline & adaptation — establish routine, start prehab religiously.",
-      meta: ["Long effort: 75 min", "Pack: 4 kg", "Volume: baseline"],
-      days: [
-        ["Mon", "Climbing + prehab after", "90 min + 10 · RPE 6–7", true],
-        ["Tue", "Strength A — full lower + core", "60 min · moderate", false],
-        ["Wed", "Zone 2 run, flat", "45 min · Z2", false],
-        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Fri", "Incline walk treadmill, 8% @ 5.0 km/h", "50 min · Z2", false],
-        ["Sat", "Long effort: stair + treadmill mix, 4 kg pack", "75 min · Z2", false],
-        ["Sun", "Active recovery: easy walk or rest", "30–45 min · easy", false]
-      ],
-      key: "Saturday's 75-min weighted long effort. Alternate 15 min stair machine (level 7) with 15 min treadmill (10% incline, 5 km/h)."
-    },
-    2: {
-      theme: "Build volume — increase ~15%, introduce sustained climbs.",
-      meta: ["Long effort: 90 min", "Pack: 6 kg", "Volume: +15%"],
-      days: [
-        ["Mon", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Tue", "Strength A", "60 min · moderate", false],
-        ["Wed", "Zone 2 run, flat", "55 min · Z2", false],
-        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Fri", "Sustained incline: 40 min @ 12%, 4.5 km/h after warm-up", "60 min · Z2/low Z3", false],
-        ["Sat", "Long effort: stair + incline treadmill, 6 kg pack", "90 min · Z2", false],
-        ["Sun", "Mobility + easy walk", "45 min · easy", false]
-      ],
-      key: "Friday's 40-min sustained 12% incline. First taste of real uphill duration. If calves cramp, more eccentric heel drops."
-    },
-    3: {
-      theme: "Specificity begins — vertical-gain focus, longer weekends.",
-      meta: ["Long effort: 110 min", "Pack: 8 kg", "First mountain sim"],
-      days: [
-        ["Mon", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Tue", "Strength B — heavier, lower volume", "60 min · moderate-hard", false],
-        ["Wed", "Zone 2 run, flat", "60 min · Z2", false],
-        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Fri", "Stair intervals: 6×4 min hard L11 / 2 min easy L6, 4 kg", "50 min · Z3–Z4", false],
-        ["Sat", "Long effort: stair + treadmill 12% sustained, 8 kg", "110 min · Z2", false],
-        ["Sun", "Active recovery + full prehab", "30 min · easy", false]
-      ],
-      key: "Saturday's 110 min with 8 kg — first session that genuinely simulates a mountain day. Stay strict on Z2; the last 30 min are where adaptation happens."
-    },
-    4: {
-      theme: "Peak volume — bring weight to course load.",
-      meta: ["Long effort: 120 min", "Pack: 10 kg", "Highest volume"],
-      days: [
-        ["Mon", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Tue", "Strength B", "60 min · moderate-hard", false],
-        ["Wed", "Zone 2 run, OR easy incline walk if heavy legs", "60 min · Z2", false],
-        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Fri", "Sustained incline: 60 min @ 12–14%, 4.5 km/h, 6 kg pack", "60 min · Z2/low Z3", false],
-        ["Sat", "Long effort: 2-hour mountain simulation, 10 kg pack", "120 min · Z2", false],
-        ["Sun", "Easy mobility + 30-min walk", "30 min · easy", false]
-      ],
-      key: "Saturday's 2-hour effort at course weight. Structure: 30 min stair L8 → 30 min treadmill 12% → 20 min stair L9 → 20 min treadmill 14% → 20 min stair L7 cooldown. Practice course-day fueling."
-    },
-    5: {
-      theme: "Peak intensity — overload weight, slight volume reduction.",
-      meta: ["Long effort: 105 min", "Pack: 12 kg overload", "Pre-taper"],
-      days: [
-        ["Mon", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Tue", "Strength C — peak loads, lower reps", "50 min · hard", false],
-        ["Wed", "Zone 2 run, flat", "45 min · Z2", false],
-        ["Thu", "Climbing + prehab", "90 min + 10 · RPE 6–7", true],
-        ["Fri", "Stair intervals: 4×6 min hard L12 / 3 min easy, 6 kg", "50 min · Z3–Z4", false],
-        ["Sat", "Overload long effort, 12 kg pack", "105 min · Z2", false],
-        ["Sun", "Rest or 20-min walk", "—", false]
-      ],
-      key: "Saturday's 12-kg overload session. Slightly shorter than Week 4 but heavier. After this session, the taper begins."
-    },
-    6: {
-      theme: "Aggressive taper — cut volume ~50%, arrive fresh on June 14.",
-      meta: ["Volume: −50%", "Pack: 6 → 0 kg", "Maintain sharpness"],
-      days: [
-        ["Mon", "Climbing — volume only, no projecting + prehab", "75 min + 10 · RPE 5–6", true],
-        ["Tue", "Light strength: half volume of Week 5", "35 min · easy-mod", false],
-        ["Wed", "Zone 2 run, flat", "30 min · Z2", false],
-        ["Thu", "Climbing — light, technique only", "60 min · RPE 4–5", true],
-        ["Fri", "Easy incline walk, 8%, no pack", "30 min · Z2", false],
-        ["Sat", "Final tune-up: mixed incline/stair, 6 kg pack", "45 min · Z2", false],
-        ["Sun", "Rest, mobility, hydrate, sleep", "—", false],
-        ["Mon Jun 13", "20-min walk + full mobility, packing", "20 min · very easy", false]
-      ],
-      key: "Resist the urge to test fitness this week. Fitness is built; now you preserve it. 50% volume cut + a few short sharp efforts brings you to the start line fresh."
-    }
-  };
+  // Persistence
+  const STORAGE_KEY = 'training-june-2026';
 
-  function escapeHTML(str) {
-    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  function loadState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch { return {}; }
   }
 
-  function renderWeek(n) {
-    const wk = weeks[n];
-    const panels = document.getElementById("week-panels");
-    let html = '<div class="week-panel">';
-    html += '<p class="week-title">Week ' + n + '</p>';
-    html += '<p class="week-theme">' + escapeHTML(wk.theme) + '</p>';
-    html += '<div class="week-meta">' + wk.meta.map(m => '<span>' + escapeHTML(m) + '</span>').join('') + '</div>';
-    for (const [day, session, meta, isClimb] of wk.days) {
-      const cls = isClimb ? ' climb' : '';
-      html += '<div class="day-row">';
-      html += '<div class="day-name' + cls + '">' + escapeHTML(day) + '</div>';
-      html += '<div class="day-session' + cls + '">' + escapeHTML(session) + '</div>';
-      html += '<div class="day-meta">' + escapeHTML(meta) + '</div>';
-      html += '</div>';
-    }
-    html += '<div class="key-callout"><div class="key-callout-label">Key workout</div><p>' + escapeHTML(wk.key) + '</p></div>';
-    html += '</div>';
-    panels.innerHTML = html;
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }
 
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      renderWeek(tab.dataset.week);
+  function updateProgress() {
+    const boxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+    const checked = document.querySelectorAll('.checklist input[type="checkbox"]:checked');
+    const pct = boxes.length ? (checked.length / boxes.length) * 100 : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressCount').textContent = checked.length;
+    document.getElementById('progressTotal').textContent = boxes.length;
+  }
+
+  function init() {
+    const state = loadState();
+    const boxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+    boxes.forEach(box => {
+      if (state[box.id]) {
+        box.checked = true;
+        box.closest('li').classList.add('done');
+      }
+      box.addEventListener('change', () => {
+        const s = loadState();
+        s[box.id] = box.checked;
+        saveState(s);
+        box.closest('li').classList.toggle('done', box.checked);
+        updateProgress();
+      });
     });
-  });
+    updateProgress();
 
-  renderWeek(1);
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      if (confirm('Clear all checkmarks? This cannot be undone.')) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    });
+  }
+
+  init();
 </script>
 
 </body>
